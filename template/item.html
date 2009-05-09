@@ -1,0 +1,63 @@
+{% extends pack.template_base.template %}
+{% block title %}{{ item|capfirst }} | {{  portfolio.title }}{% endblock %}
+{% block metaDescription %}{% firstof item.sub_title item.name %}{%endblock %}
+{% block metaKeywords %}{{ item.tags }}{%endblock %}
+{% block bodyClass %}{{ block.super}} item{% endblock %}
+
+{% block content %}
+<h2>{{item.name|capfirst}}</h2>
+<table class="item">
+	<tr><td colspan="2">
+		<a href="{{next_item.url}}"><img src="{{item.render_image}}"></a>
+	</td></tr>
+	{% if item.sub_title %}
+	<tr><td>Name</td><td class="item-sub-title">{{item.sub_title}}</td></tr>
+	{% endif %}
+	{% if item.description %}
+	<tr><td>Description</td><td class="item-desc">{{item.description}}</td></tr>
+	{% endif %}
+	<tr><td>Tags</td>
+		<td class="item-tags">
+			{% for t in item.tags_list %}
+			<a href="{{portfolio.url}}tag/{{t}}/">{{t|capfirst}}</a>
+			{% endfor %}
+		</td>
+	</tr>
+</table>
+
+
+{% block content %}
+	{% with item.tags_items as items %}
+	{% if items %}
+		<h1>{{ page }}</h1>
+		<div id="main_image" class="galleria_container">
+			<div class="galleria_wrapper">
+				<a href="{{next_item.url}}"><img src="{{item.render_image}}"></a>
+			</div>
+			<span class="caption">{{item.sub_title}}<br />{{item.description}}</span>
+		</div>
+		<div class="gallery">
+			<div class="gallery_wrap">
+				<ul class="galleria">
+					{% for i in items %}
+					<li class="{%if forloop.first%}active{%endif%}">
+							<a class="item-thumb-wrapper {% ifequal item i %}active{% endifequal %}" href="{{i.render_image}}" title="{{i|escape}}">
+								<img alt="{{i}}" title="{{i}}" class="item-thumb" src="{{ i.render_thumb }}" />
+							</a>
+							<a class="item-title" href="{{i.url}}">{{i}}</a>
+							{% if i.sub_title %}
+							<a class="item-sub-title" href="{{i.url}}">{{i.sub_title}}</a>
+							{% endif %}
+					</li>
+					{% endfor %}
+				</ul>
+			</div> 
+		</div> 
+		<p class="gallery_nav">
+			<a class="magnifier" href="#"><span>Magnify</span></a>
+			<a href="{{prev_item.url}}"><span>&laquo; previous</span></a> | 
+			<a href="{{next_item.url}}"><span>next &raquo;</span></a>
+		</p>
+	{% endif %}
+	{% endwith %}
+{% endblock %}

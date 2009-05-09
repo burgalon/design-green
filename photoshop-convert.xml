@@ -1,0 +1,29 @@
+﻿<ImageProcessor>
+	<version>1</version>
+	<useopen>false</useopen>
+	<source>E:\Files\portfolios-designs\Amnon-David-Ar\images-new</source>
+	<open>false</open>
+	<saveinsame>false</saveinsame>
+	<dest>E:\Files\portfolios-designs\Amnon-David-Ar\images</dest>
+	<jpeg>true</jpeg>
+	<psd>false</psd>
+	<tiff>false</tiff>
+	<lzw>false</lzw>
+	<converticc>false</converticc>
+	<q>6</q>
+	<max>true</max>
+	<jpegresize>true</jpegresize>
+	<jpegw>3840</jpegw>
+	<jpegh>2880</jpegh>
+	<psdresize>false</psdresize>
+	<psdw></psdw>
+	<psdh></psdh>
+	<tiffresize>false</tiffresize>
+	<tiffw></tiffw>
+	<tiffh></tiffh>
+	<runaction>false</runaction>
+	<actionset>Default Actions</actionset>
+	<action>Vignette (selection)</action>
+	<info></info>
+	<icc>true</icc>
+</ImageProcessor>
