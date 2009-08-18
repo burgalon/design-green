@@ -196,7 +196,7 @@ blockquote{
 	display: block;
 	width: 22px !important;
 	height: 20px;
-	background: transparent url('/static/5.11/images/arrows.png') no-repeat right top;
+	background: transparent url({{ pack.img_arrows.get_file }}) no-repeat right top;
 	overflow: hidden;
 	text-indent: -1000em;
 	position: absolute;
