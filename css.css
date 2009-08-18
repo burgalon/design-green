@@ -196,7 +196,7 @@ blockquote{
 	display: block;
 	width: 22px !important;
 	height: 20px;
-	background: transparent url('/static/images/arrows.png') no-repeat right top;
+	background: transparent url('/static/5.11/images/arrows.png') no-repeat right top;
 	overflow: hidden;
 	text-indent: -1000em;
 	position: absolute;
@@ -245,7 +245,7 @@ blockquote{
 }
 
 .magnifier {
-background:transparent url(/f/agpuaW5lOWZvbGRzchoLEglQb3J0Zm9saW8YsgkMCxIDRGljGP4uDA/1238606780.0/) no-repeat 0;
+background:transparent url({{ pack.img_magnifier.get_file }}) no-repeat 0;
 display:block;
 height:15px;
 right:460px;
