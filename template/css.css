@@ -1,0 +1,36 @@
+body{font:normal normal 12px/1.3em Georgia,Times,serif;color: #000;}
+ul{list-style: none;margin: 0px;padding: 0px;}
+a{text-decoration: none;color: #92c735;}
+a img{border: none;}
+h1{padding: 10px 0;}
+#header{border-bottom: 5px solid #92c735;height: 40px;}
+.logo a{font-size: 18px;color: #818181;}
+.nav a{font-size: 18px;display: block;height: 35px;line-height: 35px;border-bottom: 1px solid #e7e7e7;}
+.nav a.active{color: #c7c7c7;}
+.nav .home {display:none;}
+h2{display: none;}
+
+.main_image,
+.main_image img{width:700px;}
+
+div.colborder {border-right: 10px solid #e7e7e7; padding-right:20px; margin-right: 20px;}
+.gallery_nav {margin: 70px 0 10px 0;}
+.caption{line-height: 1.2em;margin: 70px 0 10px 0;}
+.caption *{font-size: 12px;font-weight: normal;}
+.gallery .item_title{display: none;}
+.item-thumb-wrapper img{width: 60px;height: 60px;}
+.gallery li.active{border: 2px solid #92c735;width: 56px;height: 56px;}
+.gallery li.active img{border: 1px solid #fff;width: 54px;height: 54px;}
+/* Galery pages specific CSS */
+
+.magnifier {margin: 90px 0 10px 0;background:transparent url({{ pack.img_magnifier.get_file }}) no-repeat 0;display:block;height:15px;width:80px;}
+.magnifier span {display:none;}
+
+blockquote{margin: 0;padding: 0;width:220px;height: 335px;border-top: 14px solid #e7e7e7;border-bottom: 15px solid #e7e7e7;}
+
+/* scroll */
+.jScrollPaneTrack{position: absolute;right:-10px;height: 355px !important;}
+.jScrollArrowUp,.jScrollArrowDown{display: block;width: 22px !important;height: 20px;background: transparent url({{ pack.img_arrows.get_file }}) no-repeat right top;overflow: hidden;text-indent: -1000em;position: absolute;right:-10px;top:15px;cursor: pointer;}
+.jScrollArrowDown{background-position: right bottom;top: auto;bottom: 15px;}
+.jScrollPaneTrack{position: absolute;right:-10px;top:43px !important;height: 270px !important;}
+.jScrollPaneDrag{background: #e7e7e7;position: absolute;}

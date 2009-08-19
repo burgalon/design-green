@@ -1,58 +1,45 @@
-{% extends pack.template_base.template %}
-{% block title %}{{ item|capfirst }} | {{  portfolio.title }}{% endblock %}
-{% block metaDescription %}{% firstof item.sub_title item.name %}{%endblock %}
-{% block metaKeywords %}{{ item.tags }}{%endblock %}
-{% block bodyClass %}{{ block.super}} item{% endblock %}
-
+{% extends "site/item.html" %}
+{% load utils %}
+{% block nav %}
+{% endblock %}
 {% block content %}
 	{% with item.tags_items as items %}
 	{% if items %}
-		<h1>{{ page }}</h1>
-		<div id="main_image" class="galleria_container">
-			<div class="galleria_wrapper">
-				<a href="{{next_item.url}}"><img class="replaced" src="{{item.render_image}}"></a>
+		<div class="span-18">
+			<div class="span-9">
+				<a class="magnifier" href="{{ item.get_file }}" target="blank"><span>Magnify</span></a>
 			</div>
-			<span class="caption">{{item.sub_title}}<br />{{item.description}}</span>
+			<div class="colborder span-3">
+				<a href="{{prev_item.url}}"><span>&laquo; previous</span></a> | 
+				<a href="{{next_item.url}}"><span>next &raquo;</span></a>
+			</div>
+			<div class="span-4">
+				<h2>{{ item.name }}</h2>
+				{{ item.sub_title }}
+				{{ item.description }}
+			</div>
+			<div class="main_image span-18 last">
+				<a href="{{next_item.url}}">{{item.render}}</a>
+			</div>
 		</div>
-		<div class="gallery">
-			<div class="gallery_wrap">
-				<ul class="galleria">
-					{% for i in items %}
-					<li class="{%ifequal item i%}active{%endifequal%}">
-							<a class="item-thumb-wrapper" href="{{i.url}}" title="{{i|escape}}">
-								<img alt="{{i}}" title="{{i}}" class="item-thumb" src="{{ i.render_thumb }}" />
-							</a>
-							<a class="item-title" href="{{i.url}}">{{i}}</a>
-							{% if i.sub_title %}
-							<a class="item-sub-title" href="{{i.url}}">{{i.sub_title}}</a>
-							{% endif %}
-					</li>
-					{% endfor %}
-				</ul>
-			</div> 
-		</div> 
-		<p class="gallery_nav">
-			<a class="magnifier" href="#"><span>Magnify</span></a>
-			<a href="{{prev_item.url}}"><span>&laquo; previous</span></a> | 
-			<a href="{{next_item.url}}"><span>next &raquo;</span></a>
-		</p>
 	{% endif %}
 	{% endwith %}
-{% endblock %}
-
-{% block beforeBodyEnd %}
-	{{ block.super }}
-	<script type="text/javascript" src="/static/js/jquery.galleria.min.js"></script> 
-	<script type="text/javascript">
-	jQuery(function($) {
-		$('.gallery ul li').hover(
-					function() { $(this).children('img').fadeTo('fast',0.3); },
-					function() { $(this).not('.active').children('img').fadeTo('fast',1); } // don't fade out if the parent is active
-		);
-		$('.magnifier').click(function(){
-			window.open($('#main_image img').attr('src'));
-			return false;
-		});
-	});
-	</script>
+	<div class="span-6 last">
+		<div class="nav" class="span-6">{% nav_list nav request.META.PATH_INFO ""%}</div>
+		<div class="gallery span-6">
+			<ul>
+				{% for i in items %}
+				<li class="{%ifequal item i%}active{%endifequal%}">
+						<a class="item-thumb-wrapper" href="{{i.url}}" title="{{i|escape}}">
+							{{ i.render_thumb }}
+						</a>
+						<a class="item-title" href="{{i.url}}">{{i}}</a>
+						{% if i.sub_title %}
+						<a class="item-sub-title" href="{{i.url}}">{{i.sub_title}}</a>
+						{% endif %}
+				</li>
+				{% endfor %}
+			</ul>
+		</div> 
+	</div>
 {% endblock %}
