@@ -1,11 +1,11 @@
 {% extends "site/item.html" %}
 {% block content %}
-	{% with item.tags_items as items %}
+	{% with page.items as items %}
 	{% if items %}
 		<h1>{{ page }}</h1>
 		<div id="main_image" class="galleria_container">
 			<div class="galleria_wrapper">
-				<a href="{{next_item.url}}">{{item.render_image}}</a>
+				<a href="{{next_item.url}}">{{item.render}}</a>
 			</div>
 			<span class="caption">{{item.sub_title}}<br />{{item.description}}</span>
 		</div>
@@ -27,7 +27,7 @@
 			</div> 
 		</div> 
 		<p class="gallery_nav">
-			<a class="magnifier" href="#"><span>Magnify</span></a>
+			<a class="magnifier" href="{{ item.get_file }}" target="blank"><span>Magnify</span></a>
 			<a href="{{prev_item.url}}"><span>&laquo; previous</span></a> | 
 			<a href="{{next_item.url}}"><span>next &raquo;</span></a>
 		</p>
