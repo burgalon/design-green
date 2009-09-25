@@ -1,3 +1,7 @@
 {% with items.0 as item %}
-	{% include pack.template_item.template %}
+{% with items.1 as next_item %}
+{% with items|last as prev_item %}
+	{% include pack.item.template %}
+{% endwith %}
+{% endwith %}
 {% endwith %}

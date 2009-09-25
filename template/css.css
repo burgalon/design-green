@@ -5,6 +5,7 @@ body{
 	padding: 0px;
 }
 
+.hide {display:none;}
 h1, h2, h3, h4, h5, h6 {font-weight:normal;color:#111;}
 h1 {font-size:3em;line-height:1;margin-bottom:0.5em;}
 h2 {font-size:2em;margin-bottom:0.75em;}
@@ -204,7 +205,7 @@ blockquote{
 	display: block;
 	width: 22px !important;
 	height: 20px;
-	background: transparent url({{ pack.img_arrows.get_file }}) no-repeat right top;
+	background: transparent url({{ pack.arrows.get_file }}) no-repeat right top;
 	overflow: hidden;
 	text-indent: -1000em;
 	position: absolute;
@@ -249,7 +250,7 @@ blockquote{
 }
 
 .magnifier {
-background:transparent url({{ pack.img_magnifier.get_file }}) no-repeat 0;
+background:transparent url({{ pack.magnifier.get_file }}) no-repeat 0;
 display:block;
 height:15px;
 right:460px;

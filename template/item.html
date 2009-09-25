@@ -7,7 +7,7 @@
 			<div class="galleria_wrapper">
 				<a href="{{next_item.url}}">{{item.render}}</a>
 			</div>
-			<span class="caption">{{item.sub_title}}<br />{{item.description}}</span>
+			<span class="caption">{{ item.name }}<br >{{item.sub_title}}<br />{{item.description}}</span>
 		</div>
 		<div class="gallery">
 			<div class="gallery_wrap">
@@ -33,4 +33,26 @@
 		</p>
 	{% endif %}
 	{% endwith %}
+{% endblock %}
+
+{% block beforeBodyEnd %}
+	{{ block.super }}
+	<script type="text/javascript">
+	if(top.document==document) {
+		var href = $('.active').next().find('a').attr('href')
+		$.get(href, {},
+				function(data){
+					$(data.match(/http:\/\/m\d\.[^"]+/g)).each(function(s,v) {
+						if(!v.match('thumb|js') && v.match('.jp')) {
+							$.get(v);
+						}
+					});
+		});
+
+		
+		if(href) {
+			$(document.createElement('iframe')).attr('id','next_page').attr('class','hide').attr('src', href).appendTo('.container');
+		}
+	}
+	</script>
 {% endblock %}
