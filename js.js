@@ -697,11 +697,13 @@ $(window)
 $(document).ready(initPage);
 		
 function initPage(){
-	$('.gallery ul').jScrollPane({
+	var scrollPane = $('.gallery ul')[0];
+	scrollPane.jScrollPane({
 		scrollbarWidth:4,
 		scrollbarMargin:10,
 		showArrows:true,
 		arrowSize:22,
 		controlsParent:$('.gallery')
 	});
+	scrollPane.scrollTo('.active')
 }

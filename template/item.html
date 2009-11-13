@@ -38,21 +38,14 @@
 {% block beforeBodyEnd %}
 	{{ block.super }}
 	<script type="text/javascript">
-	if(top.document==document) {
-		var href = $('.active').next().find('a').attr('href')
-		$.get(href, {},
-				function(data){
-					$(data.match(/http:\/\/m\d\.[^"]+/g)).each(function(s,v) {
-						if(!v.match('thumb|js') && v.match('.jp')) {
-							$.get(v);
-						}
-					});
-		});
-
-		
-		if(href) {
-			$(document.createElement('iframe')).attr('id','next_page').attr('class','hide').attr('src', href).appendTo('.container');
-		}
-	}
+	var href = $('.active').next().find('a').attr('href')
+	$.get(href, {},
+			function(data){
+				$(data.match(/http:\/\/m\d\.[^"]+/g)).each(function(s,v) {
+					if(!v.match('thumb|js') && v.match('.jp')) {
+						jQuery("<img>").attr("src", v);
+					}
+				});
+	});
 	</script>
 {% endblock %}
