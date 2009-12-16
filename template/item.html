@@ -38,14 +38,27 @@
 {% block beforeBodyEnd %}
 	{{ block.super }}
 	<script type="text/javascript">
-	var href = $('.active').next().find('a').attr('href')
-	$.get(href, {},
-			function(data){
-				$(data.match(/http:\/\/m\d\.[^"]+/g)).each(function(s,v) {
-					if(!v.match('thumb|js') && v.match('.jp')) {
-						jQuery("<img>").attr("src", v);
-					}
-				});
+	var scrollPane = $('.gallery ul');
+	scrollPane.jScrollPane({
+		scrollbarWidth:4,
+		scrollbarMargin:10,
+		showArrows:true,
+		arrowSize:22,
+		controlsParent:$('.gallery')
+	});
+	scrollPane[0].scrollTo('.active')
+
+	$(document).ready(function() {
+		// preloading of next page
+		var href = $('.active').next().find('a').attr('href')
+		$.get(href, {},
+				function(data){
+					$(data.match(/http:\/\/m\d\.[^"]+/g)).each(function(s,v) {
+						if(!v.match('thumb|js') && v.match('.jp')) {
+							jQuery("<img>").attr("src", v);
+						}
+					});
+		});
 	});
 	</script>
 {% endblock %}

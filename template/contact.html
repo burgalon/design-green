@@ -1,0 +1,19 @@
+{% extends pack.base.template %}
+{% block main %}
+<h2>{{ page.name }}</h2>
+	{%if form%}
+		<form method="post" action=".">
+			<table>
+				{{ form }}
+			</table>
+			<input type="submit" class="submit" value="Send" />
+		</form>
+	{%endif%}
+	{% if message %}
+		<div class="notice">
+			{{message|linebreaks}}
+		</div>
+	{% endif %}
+{% endblock %}
+{% block sidebar %}
+{% endblock %}
