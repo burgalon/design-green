@@ -48,7 +48,7 @@
 
 	$(document).ready(function() {
 		// preloading of next page
-		var href = $('.active').next().find('a').attr('href')
+		var href = $('.active').next().find('a').attr('href');
 		$.get(href, {},
 				function(data){
 					$(data.match(/http:\/\/m\d\.[^"]+/g)).each(function(s,v) {
